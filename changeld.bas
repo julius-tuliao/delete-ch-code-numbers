@@ -3,7 +3,7 @@ Option Explicit
 
 Sub changeld_Click()
 'Call check
-Call changeld
+Call changetold
 Call SortByRows
 Call check
 End Sub
@@ -56,196 +56,116 @@ End With
 End Sub
 
 
-Sub changeld()
+Sub changetold()
    Dim rCel As Range
     Dim sTxt As String
     Dim first3numbers As String
+    Dim lastrow, i, currentcell As Long
+    
     
     Const MaxLength As Long = 11
     Const MinLength As Long = 6
+      Const MidLength As Long = 7
+      Const MaxmidLength As Long = 10
     first3numbers = "032"
     
-    For Each rCel In Range("CW13", Range("CW" & Rows.count).End(xlUp))
-        sTxt = rCel.Value
-        If Len(sTxt) < MaxLength And Len(sTxt) > MinLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-          ElseIf Len(sTxt) > MaxLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-            
+    
+     With ActiveSheet
+    lastrow = .Cells(.Rows.count, "AC").End(xlUp).row
+    End With
+    
+currentcell = 12
+    For i = 13 To lastrow
+    
+    currentcell = currentcell + 1
+        sTxt = ActiveSheet.Range("CW" & currentcell).Value
+        If Len(sTxt) <> MaxLength Or Len(sTxt) <> MinLength Or Len(sTxt) <> MidLength Or Len(sTxt) <> MaxmidLength Then
+         ActiveSheet.Range("CW" & currentcell).Value = "101011"
+         
         End If
-    Next rCel
+        
+    Next i
+    
+'
+'    For Each rCel In Range("CX13", Range("CX" & Rows.count).End(xlUp))
+'        sTxt = rCel.Value
+'        If Len(sTxt) < MaxLength And Len(sTxt) > MinLength Then
+'            sTxt = "101011"
+'            If sTxt Then
+'                rCel.Value = sTxt
+'            End If
+'          ElseIf Len(sTxt) > MaxLength Then
+'            sTxt = "101011"
+'            If sTxt Then
+'                rCel.Value = sTxt
+'            End If
+'
+'
+'
+'        End If
+'    Next rCel
+'
+'
+'    For Each rCel In Range("CY13", Range("CY" & Rows.count).End(xlUp))
+'        sTxt = rCel.Value
+'        If Len(sTxt) < MaxLength And Len(sTxt) > MinLength Then
+'            sTxt = "101011"
+'            If sTxt Then
+'                rCel.Value = sTxt
+'            End If
+'          ElseIf Len(sTxt) > MaxLength Then
+'            sTxt = "101011"
+'            If sTxt Then
+'                rCel.Value = sTxt
+'            End If
+'
+'
+'
+'        End If
+'    Next rCel
+'
+'
+'    For Each rCel In Range("CZ13", Range("CZ" & Rows.count).End(xlUp))
+'        sTxt = rCel.Value
+'        If Len(sTxt) < MaxLength And Len(sTxt) > MinLength Then
+'            sTxt = "101011"
+'            If sTxt Then
+'                rCel.Value = sTxt
+'            End If
+'          ElseIf Len(sTxt) > MaxLength Then
+'            sTxt = "101011"
+'            If sTxt Then
+'                rCel.Value = sTxt
+'            End If
+'
+'
+'
+'        End If
+'    Next rCel
+'
+'
+'    For Each rCel In Range("DA13", Range("DA" & Rows.count).End(xlUp))
+'        sTxt = rCel.Value
+'        If Len(sTxt) < MaxLength And Len(sTxt) > MinLength Then
+'            sTxt = "101011"
+'            If sTxt Then
+'                rCel.Value = sTxt
+'            End If
+'          ElseIf Len(sTxt) > MaxLength Then
+'            sTxt = "101011"
+'            If sTxt Then
+'                rCel.Value = sTxt
+'            End If
+'
+'
+'
+'        End If
+'    Next rCel
     
     
-    For Each rCel In Range("CX13", Range("CX" & Rows.count).End(xlUp))
-        sTxt = rCel.Value
-        If Len(sTxt) < MaxLength And Len(sTxt) > MinLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-          ElseIf Len(sTxt) > MaxLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-            
-            
-            
-        End If
-    Next rCel
-    
-    
-    For Each rCel In Range("CY13", Range("CY" & Rows.count).End(xlUp))
-        sTxt = rCel.Value
-        If Len(sTxt) < MaxLength And Len(sTxt) > MinLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-          ElseIf Len(sTxt) > MaxLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-            
-            
-            
-        End If
-    Next rCel
-    
-    
-    For Each rCel In Range("CZ13", Range("CZ" & Rows.count).End(xlUp))
-        sTxt = rCel.Value
-        If Len(sTxt) < MaxLength And Len(sTxt) > MinLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-          ElseIf Len(sTxt) > MaxLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-            
-            
-            
-        End If
-    Next rCel
-    
-    
-    For Each rCel In Range("DA13", Range("DA" & Rows.count).End(xlUp))
-        sTxt = rCel.Value
-        If Len(sTxt) < MaxLength And Len(sTxt) > MinLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-          ElseIf Len(sTxt) > MaxLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-            
-            
-            
-        End If
-    Next rCel
-    
-    
-    
-      For Each rCel In Range("CW13", Range("CW" & Rows.count).End(xlUp))
-        sTxt = rCel.Value
-        If Left(sTxt, 3) <> "032" And Len(sTxt) = MinLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-          ElseIf Len(sTxt) > MaxLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-            
-        End If
-    Next rCel
-    
-    
-    For Each rCel In Range("CX13", Range("CX" & Rows.count).End(xlUp))
-        sTxt = rCel.Value
-        If Left(sTxt, 3) <> "032" And Len(sTxt) = MinLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-          ElseIf Len(sTxt) > MaxLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-            
-        End If
-    Next rCel
-    
-    
-    For Each rCel In Range("CY13", Range("CY" & Rows.count).End(xlUp))
-        sTxt = rCel.Value
-        If Left(sTxt, 3) <> "032" And Len(sTxt) = MinLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-          ElseIf Len(sTxt) > MaxLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-            
-        End If
-    Next rCel
-    
-    
-    For Each rCel In Range("CZ13", Range("CZ" & Rows.count).End(xlUp))
-        sTxt = rCel.Value
-        If Left(sTxt, 3) <> "032" And Len(sTxt) = MinLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-          ElseIf Len(sTxt) > MaxLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-            
-        End If
-    Next rCel
-    
-    
-    For Each rCel In Range("DA13", Range("DA" & Rows.count).End(xlUp))
-        sTxt = rCel.Value
-        If Left(sTxt, 3) <> "032" And Len(sTxt) = MinLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-          ElseIf Len(sTxt) > MaxLength Then
-            sTxt = "101011"
-            If sTxt Then
-                rCel.Value = sTxt
-            End If
-            
-        End If
-    Next rCel
     
     
 End Sub
-
 
 
 Sub check()
